@@ -1,59 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.udacity.sandwichclub.DetailActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/image_iv"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/sandwich_picture_content_description"
-        android:scaleType="centerCrop" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/origin_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            tools:context="com.udacity.sandwichclub.DetailActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/detail_also_known_as_label"
-        android:textStyle="bold" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_right_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/detail_ingredients_label"
-        android:textStyle="bold" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_left_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/detail_place_of_origin_label"
-        android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/image_iv"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/sandwich_picture_content_description"
+                android:scaleType="centerCrop"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/description_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/ingredients_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/origin_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/detail_place_of_origin_label"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/guideline_left_vertical"
+                app:layout_constraintTop_toBottomOf="@+id/image_iv" />
 
-    <TextView
-        android:id="@+id/also_known_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/origin_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_right_vertical"
+                app:layout_constraintStart_toEndOf="@+id/barrier_vertical"
+                app:layout_constraintTop_toTopOf="@+id/origin_label"
+                tools:text="Place of Origin Value" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/detail_description_label"
-        android:textStyle="bold" />
-</FrameLayout>
+            <android.support.constraint.Barrier
+                android:id="@+id/origin_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="origin_tv,origin_label" />
+
+            <TextView
+                android:id="@+id/also_known_as_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/detail_also_known_as_label"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline_left_vertical"
+                app:layout_constraintTop_toBottomOf="@+id/origin_barrier" />
+
+            <TextView
+                android:id="@+id/also_known_as_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_right_vertical"
+                app:layout_constraintStart_toEndOf="@+id/barrier_vertical"
+                app:layout_constraintTop_toTopOf="@+id/also_known_as_label"
+                tools:text="Also Known As Value" />
+
+            <android.support.constraint.Barrier
+                android:id="@+id/also_known_as_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="also_known_as_label,also_known_as_tv" />
+
+            <TextView
+                android:id="@+id/ingredients_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/detail_ingredients_label"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline_left_vertical"
+                app:layout_constraintTop_toBottomOf="@+id/also_known_as_barrier" />
+
+
+            <TextView
+                android:id="@+id/ingredients_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/guideline_right_vertical"
+                app:layout_constraintStart_toEndOf="@+id/barrier_vertical"
+                app:layout_constraintTop_toTopOf="@+id/ingredients_label"
+                tools:text="Ingredients Value" />
+
+            <android.support.constraint.Barrier
+                android:id="@+id/ingredients_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="ingredients_label,ingredients_tv" />
+
+
+            <TextView
+                android:id="@+id/description_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/detail_description_label"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline_left_vertical"
+                app:layout_constraintTop_toBottomOf="@+id/ingredients_barrier" />
+
+            <TextView
+                android:id="@+id/description_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_right_vertical"
+                app:layout_constraintStart_toEndOf="@+id/barrier_vertical"
+                app:layout_constraintTop_toTopOf="@+id/description_label"
+                tools:text="Description Value" />
+
+            <android.support.constraint.Barrier
+                android:id="@+id/barrier_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="right"
+                app:constraint_referenced_ids="origin_label,
+                as_known_as_label, ingredients_label, description_label" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</layout>
